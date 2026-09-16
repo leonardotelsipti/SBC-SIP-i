@@ -1,0 +1,12 @@
+[Unit]
+Description=Restaura Interfaces Virtuais e Rotas do SBC Telsipti
+After=network-online.target mariadb.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/php /var/www/sbc-sip-i/scripts/restore_network_backend.php
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
